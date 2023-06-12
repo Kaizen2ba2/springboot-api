@@ -55,6 +55,7 @@ public class ProductController {
         BeanUtils.copyProperties(productRecordDto, productModel);
         return ResponseEntity.status(HttpStatus.OK).body(productRepository.save(productModel));
     }
+    @DeleteMapping("products/{id}")
     public ResponseEntity<Object> deleteProduct(@PathVariable(value = "id") UUID id){
         Optional<ProductModel> productO = productRepository.findById(id);
         if(productO.isEmpty()){
